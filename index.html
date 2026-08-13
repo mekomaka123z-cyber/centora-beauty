@@ -1,43 +1,507 @@
-<style>
-    :root {
-        --primary-color: #6a1b9a; /* بنفسجي ملكي */
-        --accent-color: #d1c4e9;
-    }
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centora Beauty</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #6a1b9a;
+            --primary-hover: #4a148c;
+            --card-bg: #ffffff;
+            --text-color: #2b2b2b;
+            --border-radius: 16px;
+            --shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
 
-    body {
-        /* تدرج لوني فخم (خلفية سحابية) */
-        background: linear-gradient(135deg, #f3e5f5 0%, #ede7f6 50%, #ffffff 100%);
-        background-attachment: fixed;
-        min-height: 100vh;
-        color: #333;
-        font-family: 'Cairo', sans-serif;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
 
-    /* كروت المنتجات بتأثير الزجاج (Glassmorphism) */
-    .product-card {
-        background: rgba(255, 255, 255, 0.6); /* شفافية */
-        backdrop-filter: blur(15px); /* تمويه خلف الكارت */
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(106, 27, 154, 0.1); /* ظل خفيف جداً */
-        transition: transform 0.4s ease;
-    }
+        body {
+            /* خلفية بتدرج لوني ناعم وفخم للبراند */
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 50%, #f5f5f5 100%);
+            background-attachment: fixed;
+            color: var(--text-color);
+            padding-bottom: 60px;
+            min-height: 100vh;
+        }
 
-    .product-card:hover {
-        transform: scale(1.03);
-    }
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #4a148c, #7b1fa2);
+            color: #fff;
+            padding: 25px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
 
-    header {
-        background: linear-gradient(90deg, #4a148c, #7b1fa2);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-    }
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
 
-    .btn-submit {
-        background: linear-gradient(90deg, #6a1b9a, #9c27b0);
-        border-radius: 50px; /* زرار دائري */
-        font-size: 1.1rem;
-        padding: 15px;
-    }
-</style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 992px) {
+            .main-layout {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(106, 27, 154, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            background-color: #fff;
+            padding: 15px;
+        }
+
+        .product-info {
+            padding: 15px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #fafafa;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .btn-add {
+            background: linear-gradient(90deg, #7b1fa2, var(--primary-color));
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-add:hover {
+            opacity: 0.9;
+        }
+
+        /* Cart Section */
+        .checkout-section {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .checkout-header {
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cart-items {
+            max-height: 250px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .cart-item-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-qty {
+            background: #f0f0f0;
+            border: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            outline: none;
+            background: #fcfcfc;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary-color);
+            background: #fff;
+        }
+
+        .summary-details {
+            background: #f8f0fc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #e1bee7;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .summary-row.total {
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            border-top: 1px solid #ce93d8;
+            padding-top: 8px;
+            margin-bottom: 0;
+        }
+
+        .btn-submit {
+            background: linear-gradient(90deg, #4a148c, #7b1fa2);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: transform 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
+        }
+
+        .empty-cart-msg {
+            text-align: center;
+            color: #777;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><i class="fa-solid fa-gem"></i> Centora Beauty</h1>
+    </header>
+
+    <div class="container">
+        <div class="main-layout">
+            
+            <div class="products-grid" id="products-container"></div>
+
+            <div class="checkout-section">
+                <div class="checkout-header">
+                    <h3><i class="fa-solid fa-cart-shopping"></i> سلة الطلبات</h3>
+                    <span id="cart-count" style="background: var(--primary-color); color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.85rem;">0 منتج</span>
+                </div>
+
+                <div class="cart-items" id="cart-items">
+                    <div class="empty-cart-msg">السلة فارغة حالياً. أضف بعض العطور للبدء!</div>
+                </div>
+
+                <form id="order-form" action="https://formspree.io/f/mljrldgz" method="POST" onsubmit="prepareEmailData(event)">
+                    <div class="form-group">
+                        <label>الاسم بالكامل</label>
+                        <input type="text" name="الاسم" id="cust-name" placeholder="أدخل اسمك الكريم" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>رقم الهاتف</label>
+                        <input type="tel" name="رقم الهاتف" id="cust-phone" placeholder="01xxxxxxxxx" pattern="[0-9]{11}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>المحافظة (لتحديد الشحن)</label>
+                        <select id="cust-region" onchange="updateCalculations()" required>
+                            <option value="" disabled selected>اختر المحافظة</option>
+                            <option value="lower">وجه بحري / القناة / القاهرة الكبرى (100 ج.م)</option>
+                            <option value="upper">وجه قبلي (120 ج.م)</option>
+                            <option value="remote">المحافظات الحدودية / سيناء / الوادي الجديد (140 ج.م)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>العنوان التفصيلي</label>
+                        <input type="text" name="العنوان" id="cust-address" placeholder="اسم الشارع / رقم العمارة / الشقة" required>
+                    </div>
+
+                    <input type="hidden" name="المحافظة والشحن" id="hidden-region">
+                    <input type="hidden" name="تفاصيل الطلب" id="hidden-cart-details">
+                    <input type="hidden" name="إجمالي العطور" id="hidden-subtotal">
+                    <input type="hidden" name="سعر الشحن" id="hidden-shipping">
+                    <input type="hidden" name="الإجمالي النهائي" id="hidden-total">
+
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>إجمالي العطور:</span>
+                            <span id="subtotal-price">0 ج.م</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>الشحن:</span>
+                            <span id="shipping-price">0 ج.م</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>الإجمالي الكلي:</span>
+                            <span id="total-price">0 ج.م</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-paper-plane"></i> تأكيد وإرسال الطلب
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: "فاراواي جلامور", price: 230, img: "https://i.ibb.co/WvDvnFJ8/image.jpg" },
+            { id: 2, name: "مزمرايز بلاك", price: 250, img: "https://i.ibb.co/JfmBkzp/image.jpg" },
+            { id: 3, name: "فاراواي", price: 230, img: "https://i.ibb.co/q3FdCrMg/image.jpg" },
+            { id: 4, name: "مزمرايز الزرقاء الرجالي", price: 250, img: "https://i.ibb.co/VcX98zL3/image.jpg" },
+            { id: 5, name: "ولدرنس", price: 250, img: "https://i.ibb.co/W4CrJqsh/image.jpg" },
+            { id: 6, name: "مزمرايز حريمي", price: 230, img: "https://i.ibb.co/dskPnsY4/image.jpg" },
+            { id: 7, name: "برسيف حريمي", price: 230, img: "https://i.ibb.co/Z631vQmk/image.jpg" },
+            { id: 8, name: "رير بيرلز", price: 230, img: "https://i.ibb.co/pv8sX0cZ/image.jpg" },
+            { id: 9, name: "رير جولد", price: 230, img: "https://i.ibb.co/vFLyGRC/image.jpg" },
+            { id: 10, name: "فولسبيد إدرينالين", price: 250, img: "https://i.ibb.co/v480KrBk/image.jpg" },
+            { id: 11, name: "ليتل بلاك دريس", price: 230, img: "https://i.ibb.co/QjQdz3jZ/image.jpg" },
+            { id: 12, name: "فولسبيد", price: 250, img: "https://i.ibb.co/QjhqY5fC/image.jpg" }
+        ];
+
+        let cart = {};
+
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            container.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <img src="${product.img}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x250?text=Centora+Beauty'">
+                    <div class="product-info">
+                        <h4 class="product-title">${product.name}</h4>
+                        <div class="product-price">${product.price} ج.م</div>
+                        <button class="btn-add" onclick="addToCart(${product.id})">
+                            <i class="fa-solid fa-cart-plus"></i> أضف للسلة
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(productId) {
+            if (cart[productId]) {
+                cart[productId]++;
+            } else {
+                cart[productId] = 1;
+            }
+            updateCartUI();
+        }
+
+        function changeQty(productId, delta) {
+            if (cart[productId]) {
+                cart[productId] += delta;
+                if (cart[productId] <= 0) {
+                    delete cart[productId];
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartKeys = Object.keys(cart);
+            
+            let totalCartCount = 0;
+            let subtotal = 0;
+
+            if (cartKeys.length === 0) {
+                cartItemsContainer.innerHTML = `<div class="empty-cart-msg">السلة فارغة حالياً. أضف بعض العطور للبدء!</div>`;
+            } else {
+                cartItemsContainer.innerHTML = cartKeys.map(id => {
+                    const product = products.find(p => p.id == id);
+                    const qty = cart[id];
+                    totalCartCount += qty;
+                    subtotal += product.price * qty;
+
+                    return `
+                        <div class="cart-item">
+                            <div>
+                                <div class="cart-item-title">${product.name}</div>
+                                <div style="font-size:0.8rem; color:#666;">${product.price} × ${qty} = ${product.price * qty} ج.م</div>
+                            </div>
+                            <div class="cart-item-controls">
+                                <button type="button" class="btn-qty" onclick="changeQty(${id}, -1)">-</button>
+                                <span>${qty}</span>
+                                <button type="button" class="btn-qty" onclick="changeQty(${id}, 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            document.getElementById('cart-count').innerText = `${totalCartCount} منتج`;
+            document.getElementById('subtotal-price').innerText = `${subtotal} ج.م`;
+            
+            updateCalculations();
+        }
+
+        function updateCalculations() {
+            let subtotal = 0;
+            Object.keys(cart).forEach(id => {
+                const product = products.find(p => p.id == id);
+                subtotal += product.price * cart[id];
+            });
+
+            const regionSelect = document.getElementById('cust-region');
+            let shippingCost = 0;
+
+            if (regionSelect.value === 'lower') shippingCost = 100;
+            else if (regionSelect.value === 'upper') shippingCost = 120;
+            else if (regionSelect.value === 'remote') shippingCost = 140;
+
+            document.getElementById('shipping-price').innerText = `${shippingCost} ج.م`;
+            document.getElementById('total-price').innerText = `${subtotal + shippingCost} ج.م`;
+        }
+
+        function prepareEmailData(e) {
+            if (Object.keys(cart).length === 0) {
+                e.preventDefault();
+                alert("برجاء إضافة عطر واحد على الأقل للسلة قبل إرسال الطلب!");
+                return;
+            }
+
+            const regionSelect = document.getElementById('cust-region');
+            const regionText = regionSelect.options[regionSelect.selectedIndex].text;
+            
+            let itemsSummary = "";
+            let subtotal = 0;
+
+            Object.keys(cart).forEach(id => {
+                const product = products.find(p => p.id == id);
+                const itemTotal = product.price * cart[id];
+                subtotal += itemTotal;
+                itemsSummary += `${product.name} (العدد: ${cart[id]}) - السعر: ${itemTotal} ج.م | `;
+            });
+
+            const shippingCost = parseInt(document.getElementById('shipping-price').innerText);
+            const total = subtotal + shippingCost;
+
+            document.getElementById('hidden-region').value = regionText;
+            document.getElementById('hidden-cart-details').value = itemsSummary;
+            document.getElementById('hidden-subtotal').value = subtotal + " ج.م";
+            document.getElementById('hidden-shipping').value = shippingCost + " ج.م";
+            document.getElementById('hidden-total').value = total + " ج.م";
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>
