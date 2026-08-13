@@ -1,0 +1,43 @@
+<style>
+    :root {
+        --primary-color: #6a1b9a; /* بنفسجي ملكي */
+        --accent-color: #d1c4e9;
+    }
+
+    body {
+        /* تدرج لوني فخم (خلفية سحابية) */
+        background: linear-gradient(135deg, #f3e5f5 0%, #ede7f6 50%, #ffffff 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        color: #333;
+        font-family: 'Cairo', sans-serif;
+    }
+
+    /* كروت المنتجات بتأثير الزجاج (Glassmorphism) */
+    .product-card {
+        background: rgba(255, 255, 255, 0.6); /* شفافية */
+        backdrop-filter: blur(15px); /* تمويه خلف الكارت */
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(106, 27, 154, 0.1); /* ظل خفيف جداً */
+        transition: transform 0.4s ease;
+    }
+
+    .product-card:hover {
+        transform: scale(1.03);
+    }
+
+    header {
+        background: linear-gradient(90deg, #4a148c, #7b1fa2);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    .btn-submit {
+        background: linear-gradient(90deg, #6a1b9a, #9c27b0);
+        border-radius: 50px; /* زرار دائري */
+        font-size: 1.1rem;
+        padding: 15px;
+    }
+</style>
