@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centora Beauty</title>
-    <!-- Google Fonts & FontAwesome -->
+    <title>Centora Beauty | سنتورا بيوتي للعطور</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --primary-color: #6a1b9a;
-            --primary-hover: #4a148c;
-            --card-bg: #ffffff;
-            --text-color: #2b2b2b;
-            --border-radius: 16px;
-            --shadow: 0 10px 25px rgba(0,0,0,0.08);
+            --primary: #8e24aa;
+            --primary-dark: #6a1b9a;
+            --secondary: #d81b60;
+            --bg-light: #f9f9fb;
+            --text-dark: #222222;
+            --text-muted: #666666;
+            --card-shadow: 0 8px 20px rgba(0,0,0,0.06);
         }
 
         * {
@@ -26,514 +24,504 @@
         }
 
         body {
-            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 50%, #f5f5f5 100%) !important;
-            background-attachment: fixed;
-            color: var(--text-color);
-            padding-bottom: 60px;
-            min-height: 100vh;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
 
-        /* Header */
         header {
-            background: linear-gradient(135deg, #4a148c, #7b1fa2);
-            color: #fff;
-            padding: 25px 0;
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+            color: #ffffff;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            margin-bottom: 30px;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
+            padding: 40px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 30px 20px;
         }
 
-        /* Layout */
-        .main-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+            position: relative;
         }
 
-        @media (min-width: 992px) {
-            .main-layout {
-                grid-template-columns: 2fr 1fr;
-            }
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            display: block;
+            margin: 8px auto 0;
+            border-radius: 2px;
         }
 
-        /* Products Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
         }
 
         .product-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(106, 27, 154, 0.15);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
         }
 
-        .product-image {
-            width: 100%;
-            height: 250px;
-            object-fit: contain;
-            background-color: #fff;
-            padding: 15px;
+        .product-tag {
+            align-self: flex-start;
+            background: #f3e5f5;
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 20px;
+            margin-bottom: 12px;
         }
 
-        .product-info {
-            padding: 15px;
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background: #fafafa;
+        .product-tag.avon {
+            background: #e1f5fe;
+            color: #0288d1;
         }
 
         .product-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #111;
         }
 
+        .product-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
         .product-price {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 800;
-            color: var(--primary-color);
+            color: var(--secondary);
             margin-bottom: 15px;
         }
 
-        .btn-add {
-            background: linear-gradient(90deg, #7b1fa2, var(--primary-color));
-            color: white;
+        .btn-select {
+            background-color: var(--primary);
+            color: #fff;
             border: none;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
             width: 100%;
-            transition: opacity 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            transition: background 0.3s ease;
         }
 
-        .btn-add:hover {
-            opacity: 0.9;
+        .btn-select:hover {
+            background-color: var(--primary-dark);
         }
 
-        /* Cart Section */
-        .checkout-section {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            height: fit-content;
-            position: sticky;
-            top: 100px;
-        }
-
-        .checkout-header {
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .cart-items {
-            max-height: 250px;
-            overflow-y: auto;
-            margin-bottom: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px dashed #eee;
-        }
-
-        .cart-item-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .cart-item-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-qty {
-            background: #f0f0f0;
-            border: none;
-            width: 26px;
-            height: 26px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
+        .order-form-container {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: var(--card-shadow);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
+            margin-bottom: 8px;
             font-weight: 700;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
-            color: #444;
+            color: #333;
         }
 
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 0.95rem;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
             outline: none;
-            background: #fcfcfc;
+            transition: border-color 0.3s ease;
         }
 
-        .form-group input:focus, .form-group select:focus {
-            border-color: var(--primary-color);
-            background: #fff;
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary);
         }
 
-        .summary-details {
-            background: #f8f0fc;
+        .summary-box {
+            background-color: #f8f9fa;
+            border: 1px dashed #cccccc;
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 8px;
             margin-bottom: 20px;
-            border: 1px solid #e1bee7;
+            font-size: 1rem;
         }
 
         .summary-row {
             display: flex;
             justify-content: space-between;
             margin-bottom: 8px;
-            font-size: 0.95rem;
         }
 
         .summary-row.total {
             font-weight: 800;
-            font-size: 1.15rem;
-            color: var(--primary-color);
-            border-top: 1px solid #ce93d8;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            border-top: 1px solid #ddd;
             padding-top: 8px;
             margin-bottom: 0;
         }
 
         .btn-submit {
-            background: linear-gradient(90deg, #4a148c, #7b1fa2);
-            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
             border: none;
-            padding: 15px;
-            border-radius: 10px;
-            font-weight: 800;
-            font-size: 1.05rem;
-            cursor: pointer;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: transform 0.2s;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
         }
 
         .btn-submit:hover {
-            transform: scale(1.02);
+            opacity: 0.95;
         }
 
-        .empty-cart-msg {
+        footer {
             text-align: center;
-            color: #777;
-            padding: 20px 0;
+            padding: 25px;
+            background: #111;
+            color: #aaa;
             font-size: 0.9rem;
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1><i class="fa-solid fa-gem"></i> Centora Beauty</h1>
+        <h1>Centora Beauty</h1>
+        <p>تشكيلة العطور الأصلية والعالمية بأفضل الأسعار في مصر</p>
     </header>
 
     <div class="container">
-        <div class="main-layout">
-            
-            <div class="products-grid" id="products-container"></div>
+        <h2 class="section-title">قائمة العطور المتاحة</h2>
+        <div class="products-grid">
 
-            <div class="checkout-section">
-                <div class="checkout-header">
-                    <h3><i class="fa-solid fa-cart-shopping"></i> سلة الطلبات</h3>
-                    <span id="cart-count" style="background: var(--primary-color); color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.85rem;">0 منتج</span>
-                </div>
+            <!-- 1. Joy Dior -->
+            <div class="product-card">
+                <span class="product-tag">حريمي</span>
+                <div class="product-title">Joy – Dior</div>
+                <div class="product-desc">زُهاري حمضي منعش ومبهج (البرغموت، الورد الجوري، الياسمين، المسك الأبيض).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Joy – Dior')">اختيار العطر</button>
+            </div>
 
-                <div class="cart-items" id="cart-items">
-                    <div class="empty-cart-msg">السلة فارغة حالياً. أضف بعض العطور للبدء!</div>
-                </div>
+            <!-- 2. Giordani Gold The Original -->
+            <div class="product-card">
+                <span class="product-tag">حريمي</span>
+                <div class="product-title">Giordani Gold The Original</div>
+                <div class="product-desc">زُهاري أنيق برائحة كلاسيكية دافئة (زهر البرتقال، الماندرين، الباتشولي).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Giordani Gold The Original')">اختيار العطر</button>
+            </div>
 
-                <form id="order-form" action="https://formspree.io/f/mljrldgz" method="POST" onsubmit="prepareEmailData(event)">
-                    <div class="form-group">
-                        <label>الاسم بالكامل</label>
-                        <input type="text" name="الاسم" id="cust-name" placeholder="أدخل اسمك" required>
-                    </div>
+            <!-- 3. Olympea Paco Rabanne -->
+            <div class="product-card">
+                <span class="product-tag">حريمي</span>
+                <div class="product-title">Olympea – Paco Rabanne</div>
+                <div class="product-desc">شرقي زُهاري بنوتة الڤانيليا المالحة والياسمين المائي الجذاب.</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Olympea – Paco Rabanne')">اختيار العطر</button>
+            </div>
 
-                    <div class="form-group">
-                        <label>رقم الهاتف</label>
-                        <input type="tel" name="رقم الهاتف" id="cust-phone" placeholder="01xxxxxxxxx" pattern="[0-9]{11}" required>
-                    </div>
+            <!-- 4. Si Intense -->
+            <div class="product-card">
+                <span class="product-tag">حريمي</span>
+                <div class="product-title">Sì Intense – Giorgio Armani</div>
+                <div class="product-desc">شرقي زُهاري فخم ودافئ للمناسبات (الكشمش الأسود، الورد التركي، الڤانيليا).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Sì Intense – Giorgio Armani')">اختيار العطر</button>
+            </div>
 
-                    <div class="form-group">
-                        <label>المحافظة</label>
-                        <select id="cust-region" onchange="updateCalculations()" required>
-                            <option value="" disabled selected>اختر المحافظة</option>
-                            
-                            <!-- وجه بحري والمدن الرئيسية (100 ج.م) -->
-                            <optgroup label="وجه بحري والقاهرة والقناة (شحن 100 ج.م)">
-                                <option value="100" data-name="القاهرة">القاهرة (100 ج.م)</option>
-                                <option value="100" data-name="الجيزة">الجيزة (100 ج.م)</option>
-                                <option value="100" data-name="القليوبية">القليوبية (100 ج.م)</option>
-                                <option value="100" data-name="الإسكندرية">الإسكندرية (100 ج.م)</option>
-                                <option value="100" data-name="البحيرة">البحيرة (100 ج.م)</option>
-                                <option value="100" data-name="الغربية">الغربية (100 ج.م)</option>
-                                <option value="100" data-name="الشرقية">الشرقية (100 ج.م)</option>
-                                <option value="100" data-name="المنوفية">المنوفية (100 ج.م)</option>
-                                <option value="100" data-name="الدقهلية">الدقهلية (100 ج.م)</option>
-                                <option value="100" data-name="كفر الشيخ">كفر الشيخ (100 ج.م)</option>
-                                <option value="100" data-name="دمياط">دمياط (100 ج.م)</option>
-                                <option value="100" data-name="بورسعيد">بورسعيد (100 ج.م)</option>
-                                <option value="100" data-name="الإسماعيلية">الإسماعيلية (100 ج.م)</option>
-                                <option value="100" data-name="السويس">السويس (100 ج.م)</option>
-                            </optgroup>
+            <!-- 5. True Force Avon (رجالي) -->
+            <div class="product-card">
+                <span class="product-tag avon">إيفون - رجالي</span>
+                <div class="product-title">True Force – Avon</div>
+                <div class="product-desc">أروماتك خشبي دافئ وقوي (الحمضيات، الجلد الطبيعي، والأخشاب الدافئة).</div>
+                <div class="product-price">250 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('True Force – Avon')">اختيار العطر</button>
+            </div>
 
-                            <!-- وجه قبلي (120 ج.م) -->
-                            <optgroup label="وجه قبلي (شحن 120 ج.م)">
-                                <option value="120" data-name="الفيوم">الفيوم (120 ج.م)</option>
-                                <option value="120" data-name="بني سويف">بني سويف (120 ج.م)</option>
-                                <option value="120" data-name="المنيا">المنيا (120 ج.م)</option>
-                                <option value="120" data-name="أسيوط">أسيوط (120 ج.م)</option>
-                                <option value="120" data-name="سوهاج">سوهاج (120 ج.م)</option>
-                                <option value="120" data-name="قنا">قنا (120 ج.م)</option>
-                                <option value="120" data-name="الأقصر">الأقصر (120 ج.م)</option>
-                                <option value="120" data-name="أسوان">أسوان (120 ج.م)</option>
-                            </optgroup>
+            <!-- 6. Boss The Scent -->
+            <div class="product-card">
+                <span class="product-tag">رجالي</span>
+                <div class="product-title">Boss The Scent – Hugo Boss</div>
+                <div class="product-desc">أروماتك خشبي جذاب بنوتة فاكهة المانينكا الأفريقية والزنجبيل.</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Boss The Scent – Hugo Boss')">اختيار العطر</button>
+            </div>
 
-                            <!-- المحافظات الحدودية والبعيدة (140 ج.م) -->
-                            <optgroup label="المحافظات الحدودية والباقي (شحن 140 ج.م)">
-                                <option value="140" data-name="البحر الأحمر">البحر الأحمر (140 ج.م)</option>
-                                <option value="140" data-name="مطروح">مطروح (140 ج.م)</option>
-                                <option value="140" data-name="الوادي الجديد">الوادي الجديد (140 ج.م)</option>
-                                <option value="140" data-name="شمال سيناء">شمال سيناء (140 ج.م)</option>
-                                <option value="140" data-name="جنوب سيناء">جنوب سيناء (140 ج.م)</option>
-                            </optgroup>
-                        </select>
-                    </div>
+            <!-- 7. Chance Chanel -->
+            <div class="product-card">
+                <span class="product-tag">حريمي</span>
+                <div class="product-title">Chance – Chanel</div>
+                <div class="product-desc">زُهاري شرقي خفيف، أنيق وفرش (الفلفل الوردي، الياسمين، الڤانيليا).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Chance – Chanel')">اختيار العطر</button>
+            </div>
 
-                    <div class="form-group">
-                        <label>العنوان التفصيلي</label>
-                        <input type="text" name="العنوان" id="cust-address" placeholder="اسم الشارع / رقم العمارة / الشقة" required>
-                    </div>
+            <!-- 8. Burberry Body -->
+            <div class="product-card">
+                <span class="product-tag">حريمي</span>
+                <div class="product-title">Burberry Body</div>
+                <div class="product-desc">خشبي زُهاري ناعم ومثير (الخوخ، الورد، خشب الصندل، الكشمير).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Burberry Body')">اختيار العطر</button>
+            </div>
 
-                    <input type="hidden" name="المحافظة" id="hidden-region">
-                    <input type="hidden" name="تفاصيل الطلب" id="hidden-cart-details">
-                    <input type="hidden" name="إجمالي العطور" id="hidden-subtotal">
-                    <input type="hidden" name="سعر الشحن" id="hidden-shipping">
-                    <input type="hidden" name="الإجمالي النهائي" id="hidden-total">
+            <!-- 9. My Way -->
+            <div class="product-card">
+                <span class="product-tag">حريمي</span>
+                <div class="product-title">My Way – Giorgio Armani</div>
+                <div class="product-desc">زُهاري عصري ومبهج جداً (زهر البرتقال، مسك الروم، ڤانيليا مدغشقر).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('My Way – Giorgio Armani')">اختيار العطر</button>
+            </div>
 
-                    <div class="summary-details">
-                        <div class="summary-row">
-                            <span>إجمالي العطور:</span>
-                            <span id="subtotal-price">0 ج.م</span>
-                        </div>
-                        <div class="summary-row">
-                            <span>الشحن:</span>
-                            <span id="shipping-price">0 ج.م</span>
-                        </div>
-                        <div class="summary-row total">
-                            <span>الإجمالي الكلي:</span>
-                            <span id="total-price">0 ج.م</span>
-                        </div>
-                    </div>
+            <!-- 10. Women of Earth Avon (حريمي) -->
+            <div class="product-card">
+                <span class="product-tag avon">إيفون - حريمي</span>
+                <div class="product-title">Women of Earth – Avon</div>
+                <div class="product-desc">زُهاري فاكهي كلاسيكي هادي ومنعش (التين، الماغنوليا، الياسمين).</div>
+                <div class="product-price">230 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Women of Earth – Avon')">اختيار العطر</button>
+            </div>
 
-                    <button type="submit" class="btn-submit">
-                        <i class="fa-solid fa-paper-plane"></i> تأكيد وإرسال الطلب
-                    </button>
-                </form>
+            <!-- 11. J'adore Dior -->
+            <div class="product-card">
+                <span class="product-tag">حريمي</span>
+                <div class="product-title">J'adore – Dior</div>
+                <div class="product-desc">أسطورة العطور الزُهارية الأنثوية (الكمثرى، الماغنوليا، الورد، المسك).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('J\'adore – Dior')">اختيار العطر</button>
+            </div>
+
+            <!-- 12. 212 Sexy -->
+            <div class="product-card">
+                <span class="product-tag">حريمي</span>
+                <div class="product-title">212 Sexy – Carolina Herrera</div>
+                <div class="product-desc">شرقي زُهاري سويتي وجذاب (الفلفل الوردي، غزل البنات، الڤانيليا).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('212 Sexy – Carolina Herrera')">اختيار العطر</button>
+            </div>
+
+            <!-- 13. Acqua Di Giò EDP -->
+            <div class="product-card">
+                <span class="product-tag">رجالي</span>
+                <div class="product-title">Acqua Di Giò EDP – Giorgio Armani</div>
+                <div class="product-desc">أروماتك مائي صيفي أيقوني (نوتات بحرية، الماندرين الأخضر، البخور).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Acqua Di Giò EDP – Giorgio Armani')">اختيار العطر</button>
+            </div>
+
+            <!-- 14. Dunhill Icon -->
+            <div class="product-card">
+                <span class="product-tag">رجالي</span>
+                <div class="product-title">Dunhill Icon (Silver)</div>
+                <div class="product-desc">خشبي أروماتك فخم ورسمي (البرغموت، الفلفل الأسود، العود، الجلد).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Dunhill Icon (Silver)')">اختيار العطر</button>
+            </div>
+
+            <!-- 15. Tobacco Vanille -->
+            <div class="product-card">
+                <span class="product-tag">يونيسكس</span>
+                <div class="product-title">Tobacco Vanille – Tom Ford</div>
+                <div class="product-desc">شرقي حار دافئ وفخم (أوراق التبغ، التوابل، الڤانيليا، الكاكاو).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Tobacco Vanille – Tom Ford')">اختيار العطر</button>
+            </div>
+
+            <!-- 16. Acacia Hug Scent -->
+            <div class="product-card">
+                <span class="product-tag">يونيسكس</span>
+                <div class="product-title">Acacia – Hug Scent</div>
+                <div class="product-desc">خشبي شرقي دافئ ومميز (صمغ الأكاسيا، العنبر، التوابل).</div>
+                <div class="product-price">600 ج.م</div>
+                <button class="btn-select" onclick="selectPerfume('Acacia – Hug Scent')">اختيار العطر</button>
             </div>
 
         </div>
-    </div>
 
-    <script>
-        const products = [
-            { id: 1, name: "فاراواي جلامور", price: 230, img: "https://i.ibb.co/WvDvnFJ8/image.jpg" },
-            { id: 2, name: "مزمرايز بلاك", price: 250, img: "https://i.ibb.co/JfmBkzp/image.jpg" },
-            { id: 3, name: "فاراواي", price: 230, img: "https://i.ibb.co/q3FdCrMg/image.jpg" },
-            { id: 4, name: "مزمرايز الزرقاء الرجالي", price: 250, img: "https://i.ibb.co/VcX98zL3/image.jpg" },
-            { id: 5, name: "ولدرنس", price: 250, img: "https://i.ibb.co/W4CrJqsh/image.jpg" },
-            { id: 6, name: "مزمرايز حريمي", price: 230, img: "https://i.ibb.co/dskPnsY4/image.jpg" },
-            { id: 7, name: "برسيف حريمي", price: 230, img: "https://i.ibb.co/Z631vQmk/image.jpg" },
-            { id: 8, name: "رير بيرلز", price: 230, img: "https://i.ibb.co/pv8sX0cZ/image.jpg" },
-            { id: 9, name: "رير جولد", price: 230, img: "https://i.ibb.co/vFLyGRC/image.jpg" },
-            { id: 10, name: "فولسبيد إدرينالين", price: 250, img: "https://i.ibb.co/v480KrBk/image.jpg" },
-            { id: 11, name: "ليتل بلاك دريس", price: 230, img: "https://i.ibb.co/QjQdz3jZ/image.jpg" },
-            { id: 12, name: "فولسبيد", price: 250, img: "https://i.ibb.co/QjhqY5fC/image.jpg" }
-        ];
+        <!-- Form Section -->
+        <div class="order-form-container" id="orderFormSection">
+            <h2 class="section-title">نموذج تأكيد الطلب</h2>
+            <form action="https://formspree.io/f/mljrldgz" method="POST" id="orderForm">
+                
+                <div class="form-group">
+                    <label for="perfume_select">العطر المختار:</label>
+                    <select name="العطر" id="perfume_select" required onchange="calculateTotal()">
+                        <option value="" disabled selected>اختر العطر...</option>
+                        <option value="Joy – Dior" data-price="600">Joy – Dior (600 ج.م)</option>
+                        <option value="Giordani Gold The Original" data-price="600">Giordani Gold The Original (600 ج.م)</option>
+                        <option value="Olympea – Paco Rabanne" data-price="600">Olympea – Paco Rabanne (600 ج.م)</option>
+                        <option value="Sì Intense – Giorgio Armani" data-price="600">Sì Intense – Giorgio Armani (600 ج.م)</option>
+                        <option value="True Force – Avon" data-price="250">True Force – Avon (250 ج.م - رجالي)</option>
+                        <option value="Boss The Scent – Hugo Boss" data-price="600">Boss The Scent – Hugo Boss (600 ج.م)</option>
+                        <option value="Chance – Chanel" data-price="600">Chance – Chanel (600 ج.م)</option>
+                        <option value="Burberry Body" data-price="600">Burberry Body (600 ج.م)</option>
+                        <option value="My Way – Giorgio Armani" data-price="600">My Way – Giorgio Armani (600 ج.م)</option>
+                        <option value="Women of Earth – Avon" data-price="230">Women of Earth – Avon (230 ج.م - حريمي)</option>
+                        <option value="J'adore – Dior" data-price="600">J'adore – Dior (600 ج.م)</option>
+                        <option value="212 Sexy – Carolina Herrera" data-price="600">212 Sexy – Carolina Herrera (600 ج.م)</option>
+                        <option value="Acqua Di Giò EDP – Giorgio Armani" data-price="600">Acqua Di Giò EDP – Giorgio Armani (600 ج.م)</option>
+                        <option value="Dunhill Icon (Silver)" data-price="600">Dunhill Icon (Silver) (600 ج.م)</option>
+                        <option value="Tobacco Vanille – Tom Ford" data-price="600">Tobacco Vanille – Tom Ford (600 ج.م)</option>
+                        <option value="Acacia – Hug Scent" data-price="600">Acacia – Hug Scent (600 ج.م)</option>
+                    </select>
+                </div>
 
-        let cart = {};
+                <div class="form-group">
+                    <label for="quantity">الكمية:</label>
+                    <input type="number" name="الكمية" id="quantity" value="1" min="1" max="10" required onchange="calculateTotal()">
+                </div>
 
-        function renderProducts() {
-            const container = document.getElementById('products-container');
-            container.innerHTML = products.map(product => `
-                <div class="product-card">
-                    <img src="${product.img}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x250?text=Centora+Beauty'">
-                    <div class="product-info">
-                        <h4 class="product-title">${product.name}</h4>
-                        <div class="product-price">${product.price} ج.م</div>
-                        <button class="btn-add" onclick="addToCart(${product.id})">
-                            <i class="fa-solid fa-cart-plus"></i> أضف للسلة
-                        </button>
+                <div class="form-group">
+                    <label for="customer_name">الاسم بالكامل:</label>
+                    <input type="text" name="اسم_العميل" id="customer_name" placeholder="أدخل اسمك الشامل" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer_phone">رقم الهاتف (واتساب):</label>
+                    <input type="tel" name="رقم_الهاتف" id="customer_phone" placeholder="01xxxxxxxxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="governorate">المحافظة:</label>
+                    <select name="المحافظة" id="governorate" required onchange="calculateTotal()">
+                        <option value="" disabled selected>اختر المحافظة...</option>
+                        <option value="cairo" data-shipping="40">القاهرة (شحن 40 ج)</option>
+                        <option value="giza" data-shipping="40">الجيزة (شحن 40 ج)</option>
+                        <option value="alex" data-shipping="50">الإسكندرية (شحن 50 ج)</option>
+                        <option value="delta" data-shipping="55">محافظات الدلتا والوجه البحري (شحن 55 ج)</option>
+                        <option value="canal" data-shipping="60">محافظات القناة (شحن 60 ج)</option>
+                        <option value="upper" data-shipping="70">الصعيد والوجه القبلي (شحن 70 ج)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">العنوان التفصيلي:</label>
+                    <textarea name="العنوان" id="address" rows="3" placeholder="المنطقة، الشارع، رقم المبنى والشقة" required></textarea>
+                </div>
+
+                <!-- Hidden summary inputs for Formspree -->
+                <input type="hidden" name="سعر_المنتج_الإجمالي" id="hidden_perfume_total">
+                <input type="hidden" name="سعر_الشحن" id="hidden_shipping_total">
+                <input type="hidden" name="المبلغ_الإجمالي_الكلي" id="hidden_grand_total">
+
+                <div class="summary-box">
+                    <div class="summary-row">
+                        <span>إجمالي العطور:</span>
+                        <span id="perfume_price_sum">0 ج.م</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>مصاريف الشحن:</span>
+                        <span id="shipping_price_sum">0 ج.م</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>المبلغ الإجمالي:</span>
+                        <span id="grand_total">0 ج.م</span>
                     </div>
                 </div>
-            `).join('');
+
+                <button type="submit" class="btn-submit">تأكيد الطلب الآن</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Centora Beauty - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        function selectPerfume(name) {
+            const select = document.getElementById('perfume_select');
+            select.value = name;
+            document.getElementById('orderFormSection').scrollIntoView({ behavior: 'smooth' });
+            calculateTotal();
         }
 
-        function addToCart(productId) {
-            if (cart[productId]) {
-                cart[productId]++;
-            } else {
-                cart[productId] = 1;
-            }
-            updateCartUI();
-        }
+        function calculateTotal() {
+            const perfumeSelect = document.getElementById('perfume_select');
+            const qtyInput = document.getElementById('quantity');
+            const govSelect = document.getElementById('governorate');
 
-        function changeQty(productId, delta) {
-            if (cart[productId]) {
-                cart[productId] += delta;
-                if (cart[productId] <= 0) {
-                    delete cart[productId];
-                }
-            }
-            updateCartUI();
-        }
+            const qty = parseInt(qtyInput.value) || 1;
+            let unitPrice = 0;
 
-        function updateCartUI() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartKeys = Object.keys(cart);
-            
-            let totalCartCount = 0;
-            let subtotal = 0;
-
-            if (cartKeys.length === 0) {
-                cartItemsContainer.innerHTML = `<div class="empty-cart-msg">السلة فارغة حالياً. أضف بعض العطور للبدء!</div>`;
-            } else {
-                cartItemsContainer.innerHTML = cartKeys.map(id => {
-                    const product = products.find(p => p.id == id);
-                    const qty = cart[id];
-                    totalCartCount += qty;
-                    subtotal += product.price * qty;
-
-                    return `
-                        <div class="cart-item">
-                            <div>
-                                <div class="cart-item-title">${product.name}</div>
-                                <div style="font-size:0.8rem; color:#666;">${product.price} × ${qty} = ${product.price * qty} ج.م</div>
-                            </div>
-                            <div class="cart-item-controls">
-                                <button type="button" class="btn-qty" onclick="changeQty(${id}, -1)">-</button>
-                                <span>${qty}</span>
-                                <button type="button" class="btn-qty" onclick="changeQty(${id}, 1)">+</button>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
+            if (perfumeSelect.selectedIndex > 0) {
+                const selectedPerfumeOption = perfumeSelect.options[perfumeSelect.selectedIndex];
+                unitPrice = parseInt(selectedPerfumeOption.getAttribute('data-price')) || 600;
             }
 
-            document.getElementById('cart-count').innerText = `${totalCartCount} منتج`;
-            document.getElementById('subtotal-price').innerText = `${subtotal} ج.م`;
-            
-            updateCalculations();
-        }
+            const perfumeTotal = unitPrice * qty;
 
-        function updateCalculations() {
-            let subtotal = 0;
-            Object.keys(cart).forEach(id => {
-                const product = products.find(p => p.id == id);
-                subtotal += product.price * cart[id];
-            });
-
-            const regionSelect = document.getElementById('cust-region');
-            let shippingCost = parseInt(regionSelect.value) || 0;
-
-            document.getElementById('shipping-price').innerText = `${shippingCost} ج.م`;
-            document.getElementById('total-price').innerText = `${subtotal + shippingCost} ج.م`;
-        }
-
-        function prepareEmailData(e) {
-            if (Object.keys(cart).length === 0) {
-                e.preventDefault();
-                alert("برجاء إضافة عطر واحد على الأقل للسلة قبل إرسال الطلب!");
-                return;
+            let shippingTotal = 0;
+            if (govSelect.selectedIndex > 0) {
+                const selectedGovOption = govSelect.options[govSelect.selectedIndex];
+                shippingTotal = parseInt(selectedGovOption.getAttribute('data-shipping')) || 0;
             }
 
-            const regionSelect = document.getElementById('cust-region');
-            const selectedOption = regionSelect.options[regionSelect.selectedIndex];
-            const governorateName = selectedOption.getAttribute('data-name');
-            
-            let itemsSummary = "";
-            let subtotal = 0;
+            const grandTotal = perfumeTotal + shippingTotal;
 
-            Object.keys(cart).forEach(id => {
-                const product = products.find(p => p.id == id);
-                const itemTotal = product.price * cart[id];
-                subtotal += itemTotal;
-                itemsSummary += `${product.name} (العدد: ${cart[id]}) - السعر: ${itemTotal} ج.م | `;
-            });
+            // Update UI
+            document.getElementById('perfume_price_sum').innerText = perfumeTotal + " ج.م";
+            document.getElementById('shipping_price_sum').innerText = shippingTotal + " ج.م";
+            document.getElementById('grand_total').innerText = grandTotal + " ج.م";
 
-            const shippingCost = parseInt(regionSelect.value) || 0;
-            const total = subtotal + shippingCost;
-
-            document.getElementById('hidden-region').value = governorateName;
-            document.getElementById('hidden-cart-details').value = itemsSummary;
-            document.getElementById('hidden-subtotal').value = subtotal + " ج.م";
-            document.getElementById('hidden-shipping').value = shippingCost + " ج.م";
-            document.getElementById('hidden-total').value = total + " ج.م";
+            // Update hidden inputs for Formspree
+            document.getElementById('hidden_perfume_total').value = perfumeTotal + " EGP";
+            document.getElementById('hidden_shipping_total').value = shippingTotal + " EGP";
+            document.getElementById('hidden_grand_total').value = grandTotal + " EGP";
         }
-
-        renderProducts();
     </script>
 </body>
 </html>
