@@ -97,23 +97,13 @@
             box-shadow: 0 15px 30px rgba(106, 27, 154, 0.15);
         }
 
-        /* Container & Image Styling for High Quality Display */
-        .product-image-container {
+        .product-image {
             width: 100%;
             height: 250px;
-            background-color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .product-image {
-            max-width: 100%;
-            max-height: 100%;
             object-fit: contain;
-            image-rendering: -webkit-optimize-contrast;
+            background-color: #ffffff;
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
         }
 
         .product-info {
@@ -332,7 +322,7 @@
                         <select id="cust-region" onchange="updateCalculations()" required>
                             <option value="" disabled selected>اختر المحافظة</option>
                             
-                            <!-- وجه بحري والقاهرة والقناة (100 ج.م) -->
+                            <!-- وجه بحري والمدن الرئيسية (100 ج.م) -->
                             <optgroup label="وجه بحري والقاهرة والقناة (شحن 100 ج.م)">
                                 <option value="100" data-name="القاهرة">القاهرة (100 ج.م)</option>
                                 <option value="100" data-name="الجيزة">الجيزة (100 ج.م)</option>
@@ -430,9 +420,7 @@
             const container = document.getElementById('products-container');
             container.innerHTML = products.map(product => `
                 <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="${product.img}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x250?text=Centora+Beauty'">
-                    </div>
+                    <img src="${product.img}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x250?text=Centora+Beauty'">
                     <div class="product-info">
                         <h4 class="product-title">${product.name}</h4>
                         <div class="product-price">${product.price} ج.م</div>
