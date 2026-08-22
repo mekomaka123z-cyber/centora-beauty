@@ -7,7 +7,12 @@
     <!-- كود إثبات الملكية لـ Google Search Console -->
     <meta name="google-site-verification" content="e73gB5Vit_Z-OTQsw1JZWrzwCsml1TkJXTePQfGQjrk" />
     
-    <title>Centora Beauty</title>
+    <!-- تحسينات محركات البحث SEO لظهور الموقع في البحث -->
+    <title>Centora Beauty | متجر برفانات سيمي اورجنال وعطور أصلية في مصر</title>
+    <meta name="description" content="تسوق أفضل برفانات سيمي اورجنال بأعلى ثبات وأفضل سعر في مصر من Centora Beauty. تشكيلة مميزة من العطور الحريمي والرجالي الأكثر مبيعاً مع توصيل لجميع المحافظات.">
+    <meta name="keywords" content="برفانات سيمي اورجنال, عطور سيمي اورجينال, برفانات حريمي, عطور رجالي, سنتورا بيوتي, Centora Beauty, عطور مصر, شراء برفانات اونلاين">
+    <meta name="robots" content="index, follow">
+
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -56,6 +61,12 @@
             font-size: 2.2rem;
             font-weight: 800;
             letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            margin-top: 5px;
+            opacity: 0.9;
         }
 
         .container {
@@ -122,8 +133,15 @@
         .product-title {
             font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             color: #111;
+        }
+
+        .product-badge {
+            font-size: 0.75rem;
+            color: #6a1b9a;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
         .product-price {
@@ -292,6 +310,7 @@
 
     <header>
         <h1><i class="fa-solid fa-gem"></i> Centora Beauty</h1>
+        <p>تشكيلة فاخرة من البرفانات السيمي اورجنال بأعلى ثبات فوّاح ✨</p>
     </header>
 
     <div class="container">
@@ -403,18 +422,18 @@
 
     <script>
         const products = [
-            { id: 1, name: "فاراواي جلامور", price: 230, img: "https://i.ibb.co/WvDvnFJ8/image.jpg" },
-            { id: 2, name: "مزمرايز بلاك", price: 250, img: "https://i.ibb.co/JfmBkzp/image.jpg" },
-            { id: 3, name: "فاراواي", price: 230, img: "https://i.ibb.co/q3FdCrMg/image.jpg" },
-            { id: 4, name: "مزمرايز الزرقاء الرجالي", price: 250, img: "https://i.ibb.co/VcX98zL3/image.jpg" },
-            { id: 5, name: "ولدرنس", price: 250, img: "https://i.ibb.co/W4CrJqsh/image.jpg" },
-            { id: 6, name: "مزمرايز حريمي", price: 230, img: "https://i.ibb.co/dskPnsY4/image.jpg" },
-            { id: 7, name: "برسيف حريمي", price: 230, img: "https://i.ibb.co/Z631vQmk/image.jpg" },
-            { id: 8, name: "رير بيرلز", price: 230, img: "https://i.ibb.co/pv8sX0cZ/image.jpg" },
-            { id: 9, name: "رير جولد", price: 230, img: "https://i.ibb.co/vFLyGRC/image.jpg" },
-            { id: 10, name: "فولسبيد إدرينالين", price: 250, img: "https://i.ibb.co/v480KrBk/image.jpg" },
-            { id: 11, name: "ليتل بلاك دريس", price: 230, img: "https://i.ibb.co/QjQdz3jZ/image.jpg" },
-            { id: 12, name: "فولسبيد", price: 250, img: "https://i.ibb.co/QjhqY5fC/image.jpg" }
+            { id: 1, name: "برفان فاراواي جلامور", price: 230, img: "https://i.ibb.co/WvDvnFJ8/image.jpg" },
+            { id: 2, name: "برفان مزمرايز بلاك", price: 250, img: "https://i.ibb.co/JfmBkzp/image.jpg" },
+            { id: 3, name: "برفان فاراواي حريمي", price: 230, img: "https://i.ibb.co/q3FdCrMg/image.jpg" },
+            { id: 4, name: "عطر مزمرايز الزرقاء رجالي", price: 250, img: "https://i.ibb.co/VcX98zL3/image.jpg" },
+            { id: 5, name: "برفان ولدرنس رجالي", price: 250, img: "https://i.ibb.co/W4CrJqsh/image.jpg" },
+            { id: 6, name: "برفان مزمرايز حريمي", price: 230, img: "https://i.ibb.co/dskPnsY4/image.jpg" },
+            { id: 7, name: "برفان برسيف حريمي", price: 230, img: "https://i.ibb.co/Z631vQmk/image.jpg" },
+            { id: 8, name: "برفان رير بيرلز", price: 230, img: "https://i.ibb.co/pv8sX0cZ/image.jpg" },
+            { id: 9, name: "برفان رير جولد", price: 230, img: "https://i.ibb.co/vFLyGRC/image.jpg" },
+            { id: 10, name: "عطر فولسبيد إدرينالين", price: 250, img: "https://i.ibb.co/v480KrBk/image.jpg" },
+            { id: 11, name: "برفان ليتل بلاك دريس", price: 230, img: "https://i.ibb.co/QjQdz3jZ/image.jpg" },
+            { id: 12, name: "عطر فولسبيد رجالي", price: 250, img: "https://i.ibb.co/QjhqY5fC/image.jpg" }
         ];
 
         let cart = {};
@@ -423,9 +442,10 @@
             const container = document.getElementById('products-container');
             container.innerHTML = products.map(product => `
                 <div class="product-card">
-                    <img src="${product.img}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x250?text=Centora+Beauty'">
+                    <img src="${product.img}" alt="${product.name} سيمي اورجنال" class="product-image" onerror="this.src='https://via.placeholder.com/300x250?text=Centora+Beauty'">
                     <div class="product-info">
                         <h4 class="product-title">${product.name}</h4>
+                        <div class="product-badge">سيمي اورجنال - عالي الثبات 🌟</div>
                         <div class="product-price">${product.price} ج.م</div>
                         <button class="btn-add" onclick="addToCart(${product.id})">
                             <i class="fa-solid fa-cart-plus"></i> أضف للسلة
@@ -503,7 +523,7 @@
             let shippingCost = parseInt(regionSelect.value) || 0;
 
             document.getElementById('shipping-price').innerText = `${shippingCost} ج.م`;
-            document.getElementById('total-price').innerText = `${subtotal + shippingCost} ج.m`;
+            document.getElementById('total-price').innerText = `${subtotal + shippingCost} ج.م`;
         }
 
         function prepareEmailData(e) {
